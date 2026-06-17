@@ -26,6 +26,10 @@ function addGameToLibrary(name, gamePlatform, hoursPlayed, finished){
     return myLibrary.push(new Game(name, gamePlatform, hoursPlayed, finished));
 };
 
+function removeGameFromLibrary(){
+
+};
+
 function renderLibrary(){
     container.innerHTML = "";
     myLibrary.forEach(game => {
@@ -44,6 +48,14 @@ function renderLibrary(){
         let gameStatus = document.createElement("p");
         card.appendChild(gameStatus);
         gameStatus.textContent = "Game status: " + game.finished;
+        let finishedNowButton = document.createElement("button");
+        card.appendChild(finishedNowButton);
+        finishedNowButton.textContent = "toggle game status"
+        finishedNowButton.classList.add("finished-now-button");
+        let deleteCardButton = document.createElement("button");
+        deleteCardButton.textContent = "X";
+        card.appendChild(deleteCardButton);
+        deleteCardButton.classList.add("delete-card-button");
     });
 }
 
@@ -66,3 +78,7 @@ newGameForm.onsubmit = function(e){
     newGameForm.reset();
     addNewGameDialog.close();
 };
+
+addGameToLibrary("GTA 6", "PS5", "0", "false");
+renderLibrary();
+

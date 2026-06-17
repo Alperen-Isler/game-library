@@ -68,3 +68,13 @@ h1{
     background-color: #CCC;
     border-radius: 50px;
 }
+
+.finished-now-button{
+  width: 150px;
+}
+
+.delete-card-button{
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+}
