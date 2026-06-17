@@ -27,7 +27,6 @@ function addGameToLibrary(name, gamePlatform, hoursPlayed, finished){
 };
 
 function removeGameFromLibrary(){
-
 };
 
 function renderLibrary(){
@@ -39,6 +38,11 @@ function renderLibrary(){
         let gameTitle = document.createElement("h2");
         card.appendChild(gameTitle);
         gameTitle.textContent = game.name;
+        let deleteCardButton = document.createElement("button");
+        deleteCardButton.textContent = "X";
+        card.appendChild(deleteCardButton);
+        deleteCardButton.classList.add("delete-card-button");
+        deleteCardButton.dataset.id = game.id;
         let gameDevelopers = document.createElement("p");
         card.appendChild(gameDevelopers);
         gameDevelopers.textContent = "Platform: " + game.gamePlatform;
@@ -52,10 +56,26 @@ function renderLibrary(){
         card.appendChild(finishedNowButton);
         finishedNowButton.textContent = "toggle game status"
         finishedNowButton.classList.add("finished-now-button");
-        let deleteCardButton = document.createElement("button");
-        deleteCardButton.textContent = "X";
-        card.appendChild(deleteCardButton);
-        deleteCardButton.classList.add("delete-card-button");
+        
+
+        deleteCardButton.addEventListener("click", function(){
+            const index = myLibrary.findIndex(
+            gameInLibrary => gameInLibrary.id === game.id
+            );
+
+            myLibrary.splice(index, 1);
+            renderLibrary();
+            });
+
+        finishedNowButton.addEventListener("click", function(){
+            if (game.finished === "finished the game"){
+                game.finished = "didn't finish the game yet";
+                renderLibrary();
+            } else if (game.finished === "didn't finish the game yet"){
+                game.finished = "finished the game";
+                renderLibrary();
+            }
+        });
     });
 }
 
@@ -81,4 +101,3 @@ newGameForm.onsubmit = function(e){
 
 addGameToLibrary("GTA 6", "PS5", "0", "false");
 renderLibrary();
-
