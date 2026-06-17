@@ -8,9 +8,47 @@
     <script src="./script.js" defer></script>
 </head>
 <body>
-    <h1>Your personal game library</h1>
-    <div class="container">
+    <div class="header">
+        <h1>Your personal game library</h1>
+        <button class="add-game">
+            Add new Game to your library
+        </button>
+    </div>
+    <div class="game-container">
         
     </div>
+    <dialog class="add-game-dialog">
+            <form id="new-game-form">
+                <label for="new-game-name">Name of the Game</label>
+                <input type="text" id="new-game-name" name="new-game-name" placeholder="Enter Game name" required>
+
+                <fieldset>
+                    <legend>Choose the platform of the Game</legend>
+                    <label for="platform-ps5">PS-5</label>
+                    <input type="radio" id="platform-ps5" name="game-platform" value="PS5" required>
+                    <label for="platform-pc">PC</label>
+                    <input type="radio" id="platform-pc" name="game-platform" value="PC">
+                    <label for="platform-xbox">XBOX</label>
+                    <input type="radio" name="game-platform" id="platform-xbox" value="XBOX">
+                    <label for="platform-switch">NINTENDO</label>
+                    <input type="radio" name="game-platform" id="platform-switch" value="NINTENDO">
+                    <label for="platform-other">OTHER</label>
+                    <input type="radio" name="game-platform" id="platform-other" value="OTHER">
+                </fieldset>
+
+                <label for="hours-played">Hours played</label>
+                <input type="number" name="game-time-played" id="game-time-played" min="0" step="1" required>
+
+                <fieldset>
+                    <legend>Did you finish the game?</legend>
+                    <label for="yes-finished">Yes</label>
+                    <input type="radio" name="is-finished" id="yes-finished" value="true" required>
+                    <label for="not-finished">No</label>
+                    <input type="radio" name="is-finished" id="not-finished" value="false">
+                </fieldset>
+                <button type="submit">Add the game to the library</button>
+                <button id="close-modal" type="button">Close</button>
+            </form>
+        </dialog>
 </body>
 </html>
