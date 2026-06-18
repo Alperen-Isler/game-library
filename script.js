@@ -16,9 +16,9 @@ function Game(name, gamePlatform, hoursPlayed, finished){
     this.hoursPlayed = hoursPlayed;
     this.id = crypto.randomUUID();
     if(finished === "true"){
-        this.finished = "finished the Game"
+        this.finished = "✅ finished"
     } else if (finished === "false"){
-        this.finished = "didn't finish the game yet"
+        this.finished = "⚠️ not finished"
     };
 };
 
@@ -35,6 +35,11 @@ function renderLibrary(){
         let card = document.createElement("div");
         card.classList.add("card");
         container.appendChild(card);
+        if(game.finished === "✅ finished"){
+            card.classList.add("status-finished")
+        } else if(game.finished === "⚠️ not finished"){
+            card.classList.add("status-not-finished")
+        };
         let gameTitle = document.createElement("h2");
         card.appendChild(gameTitle);
         gameTitle.textContent = game.name;
@@ -43,15 +48,18 @@ function renderLibrary(){
         card.appendChild(deleteCardButton);
         deleteCardButton.classList.add("delete-card-button");
         deleteCardButton.dataset.id = game.id;
-        let gameDevelopers = document.createElement("p");
-        card.appendChild(gameDevelopers);
-        gameDevelopers.textContent = "Platform: " + game.gamePlatform;
+        let gamePlatform = document.createElement("p");
+        card.appendChild(gamePlatform);
+        gamePlatform.textContent = "Platform: " + game.gamePlatform;
+        gamePlatform.classList.add("game-platform");
         let gameHoursPlayed = document.createElement("p");
+        gameHoursPlayed.classList.add("game-hours-played");
         card.appendChild(gameHoursPlayed);
         gameHoursPlayed.textContent = "Hours played: " + game.hoursPlayed;
         let gameStatus = document.createElement("p");
         card.appendChild(gameStatus);
         gameStatus.textContent = "Game status: " + game.finished;
+        gameStatus.classList.add("game-status");
         let finishedNowButton = document.createElement("button");
         card.appendChild(finishedNowButton);
         finishedNowButton.textContent = "toggle game status"
@@ -68,11 +76,11 @@ function renderLibrary(){
             });
 
         finishedNowButton.addEventListener("click", function(){
-            if (game.finished === "finished the game"){
-                game.finished = "didn't finish the game yet";
+            if (game.finished === "✅ finished"){
+                game.finished = "⚠️ not finished";
                 renderLibrary();
-            } else if (game.finished === "didn't finish the game yet"){
-                game.finished = "finished the game";
+            } else if (game.finished === "⚠️ not finished"){
+                game.finished = "✅ finished";
                 renderLibrary();
             }
         });

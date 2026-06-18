@@ -9,9 +9,9 @@
 </head>
 <body>
     <div class="header">
-        <h1>Your personal game library</h1>
+        <h1>Your personal Game Library</h1>
         <button class="add-game">
-            Add new Game to your library
+            + ADD GAME
         </button>
     </div>
     <div class="game-container">
@@ -19,35 +19,54 @@
     </div>
     <dialog class="add-game-dialog">
             <form id="new-game-form">
-                <label for="new-game-name">Name of the Game</label>
-                <input type="text" id="new-game-name" name="new-game-name" placeholder="Enter Game name" required>
-
                 <fieldset>
-                    <legend>Choose the platform of the Game</legend>
-                    <label for="platform-ps5">PS-5</label>
-                    <input type="radio" id="platform-ps5" name="game-platform" value="PS5" required>
-                    <label for="platform-pc">PC</label>
-                    <input type="radio" id="platform-pc" name="game-platform" value="PC">
-                    <label for="platform-xbox">XBOX</label>
-                    <input type="radio" name="game-platform" id="platform-xbox" value="XBOX">
-                    <label for="platform-switch">NINTENDO</label>
-                    <input type="radio" name="game-platform" id="platform-switch" value="NINTENDO">
-                    <label for="platform-other">OTHER</label>
-                    <input type="radio" name="game-platform" id="platform-other" value="OTHER">
+                    <section class="form-game-name">
+                        <label class="form-section-title" for="new-game-name">Name of the Game</label>
+                        <input type="text" id="new-game-name" class="text-field" name="new-game-name" placeholder="Enter name of the game" maxlength="18" required>
+                    </section>
+                    <fieldset class="form-platform-section">
+                        <legend class="form-section-title">Choose the platform of the Game</legend>
+                        <section>
+                            <input type="radio" id="platform-ps5" name="game-platform" value="PS5" required>
+                            <label class="radio-text" for="platform-ps5">PS-5</label>
+                        </section>
+                        <section>
+                            <input type="radio" id="platform-pc" name="game-platform" value="PC">
+                            <label class="radio-text" for="platform-pc">PC</label>
+                        </section>
+                        <section>
+                            <input type="radio" name="game-platform" id="platform-xbox" value="XBOX">
+                            <label class="radio-text" for="platform-xbox">XBOX</label>
+                        </section>
+                        <section>
+                            <input type="radio" name="game-platform" id="platform-switch" value="NINTENDO">
+                            <label class="radio-text" for="platform-switch">NINTENDO</label>
+                        </section>
+                        <section>
+                            <input type="radio" name="game-platform" id="platform-other" value="OTHER">
+                            <label class="radio-text" for="platform-other">OTHER</label>
+                        </section>
+                    </fieldset>
+                    <section class="form-game-name">
+                        <label class="form-section-title" for="game-time-played">Hours played</label>
+                        <input class="text-field" type="number" name="game-time-played" id="game-time-played" min="0" step="1" required>
+                    </section>
+                    <fieldset class="form-platform-section">
+                        <legend class="form-section-title">Did you finish the game?</legend>
+                        <section>
+                            <input type="radio" name="is-finished" id="yes-finished" value="true" required>
+                            <label class="radio-text" for="yes-finished">Yes</label>
+                        </section>
+                        <section>
+                            <input type="radio" name="is-finished" id="not-finished" value="false">
+                            <label class="radio-text" for="not-finished">No</label>
+                        </section>
+                    </fieldset>
+                    <section class="form-button-section">
+                        <button id="add-game" type="submit">ADD GAME</button>
+                        <button id="close-modal" type="button">CLOSE</button>
+                    </section>
                 </fieldset>
-
-                <label for="game-time-played">Hours played</label>
-                <input type="number" name="game-time-played" id="game-time-played" min="0" step="1" required>
-
-                <fieldset>
-                    <legend>Did you finish the game?</legend>
-                    <label for="yes-finished">Yes</label>
-                    <input type="radio" name="is-finished" id="yes-finished" value="true" required>
-                    <label for="not-finished">No</label>
-                    <input type="radio" name="is-finished" id="not-finished" value="false">
-                </fieldset>
-                <button type="submit">Add the game to the library</button>
-                <button id="close-modal" type="button">Close</button>
             </form>
         </dialog>
 </body>
