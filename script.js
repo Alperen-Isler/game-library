@@ -7,19 +7,18 @@ const newGameForm = document.querySelector("#new-game-form");
 
 const myLibrary = [];
 
-function Game(name, gamePlatform, hoursPlayed, finished){
-    if(!new.target){
-        throw Error("you must use the 'new' operator to call the constructor")
-    }
-    this.name = name;
-    this.gamePlatform = gamePlatform;
-    this.hoursPlayed = hoursPlayed;
-    this.id = crypto.randomUUID();
-    if(finished === "true"){
+class Game{
+    constructor(name, gamePlatform, hoursPlayed, finished){
+        this.name = name;
+        this.gamePlatform = gamePlatform;
+        this.hoursPlayed = hoursPlayed;
+        this.id = crypto.randomUUID();
+        if(finished === "true"){
         this.finished = "✅ finished"
-    } else if (finished === "false"){
+        } else if (finished === "false"){
         this.finished = "⚠️ not finished"
-    };
+        };
+    }
 };
 
 function addGameToLibrary(name, gamePlatform, hoursPlayed, finished){
@@ -62,7 +61,7 @@ function renderLibrary(){
         gameStatus.classList.add("game-status");
         let finishedNowButton = document.createElement("button");
         card.appendChild(finishedNowButton);
-        finishedNowButton.textContent = "toggle game status"
+        finishedNowButton.textContent = "Toggle Game Status"
         finishedNowButton.classList.add("finished-now-button");
         
 
